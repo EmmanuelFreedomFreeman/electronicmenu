@@ -59,7 +59,9 @@ function Gridbasket(props:any) {
 
         useEffect(() => {
 
-            
+            if (props?.basketItems == undefined) {
+                props?.setbasketItems([]);
+            }
             
             const unsubcat = onSnapshot(doc(db,company, "ORDER"), (doc) => {
                 doc.data()?.order? setOrder([...doc.data()?.order]):'';
