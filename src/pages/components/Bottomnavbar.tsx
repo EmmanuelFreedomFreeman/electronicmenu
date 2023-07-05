@@ -4,8 +4,9 @@ function Bottomnavbar(props: any) {
    const lengthOfTheBasket = props?.getit.length
    const lengthFood = props?.getit?.map((val:any,index:any)=>(val.cat.split('/')[1] == 'FOOD'))
    const lengthDrink = props?.getit?.map((val:any,index:any)=>(val.cat.split('/')[1] == 'DRINK'))
-   const food = lengthFood?.filter((e: any) => e == true)?.length
-   const drink = lengthDrink?.filter((e: any) => e == true)?.length
+   const food = lengthFood.filter((e: any) => e == true)? lengthFood.filter((e: any) => e == true).length : 0
+   const drink = lengthDrink.filter((e: any) => e == true) ? lengthDrink.filter((e: any) => e == true).length : 0
+
 
    
   return (
