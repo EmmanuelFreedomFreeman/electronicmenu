@@ -34,9 +34,9 @@ function Griditems(props: any) {
             
         }
         
-        const findInItem = props?.basketItems.find((e:any) => e.name == props?.name)
+        const findInItem = props?.basketItems?.find((e:any) => e.name == props?.name)
         if (findInItem != undefined) {
-            const findIndexItem = props?.basketItems.findIndex((e:any) => e.name == props?.name)
+            const findIndexItem = props?.basketItems?.findIndex((e:any) => e.name == props?.name)
             const temp = [...props.basketItems]
             temp.splice(findIndexItem, 1,item)
             props.setbasketItems([...temp])
