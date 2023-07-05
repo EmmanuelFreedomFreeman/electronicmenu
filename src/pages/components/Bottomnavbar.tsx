@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router';
 function Bottomnavbar(props: any) {
    const lengthOfTheBasket = props?.getit.length
-   const lengthFood = props?.getit.map((val:any,index:any)=>(val.cat.split('/')[1] == 'FOOD'))
-   const lengthDrink = props?.getit.map((val:any,index:any)=>(val.cat.split('/')[1] == 'DRINK'))
-   const food = lengthFood.filter((e: any) => e == true).length
-   const drink = lengthDrink.filter((e: any) => e == true).length
+   const lengthFood = props?.getit?.map((val:any,index:any)=>(val.cat.split('/')[1] == 'FOOD'))
+   const lengthDrink = props?.getit?.map((val:any,index:any)=>(val.cat.split('/')[1] == 'DRINK'))
+   const food = lengthFood?.filter((e: any) => e == true)?.length
+   const drink = lengthDrink?.filter((e: any) => e == true)?.length
 
    
   return (
