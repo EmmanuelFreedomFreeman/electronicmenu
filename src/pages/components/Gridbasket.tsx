@@ -67,12 +67,14 @@ function Gridbasket(props:any) {
                 doc.data()?.order? setOrder([...doc.data()?.order]):'';
               });
 
-            let ss = 0
-            props?.basketItems !=undefined ? props?.basketItems?.map((val:any,index:any)=>{
-                const temp = val?.amount * val?.qte
-                ss = ss + temp
-            }):null
-            setSum(ss)
+            if (props?.basketItems != undefined) {
+                let ss = 0
+                props?.basketItems !=undefined ? props?.basketItems?.map((val:any,index:any)=>{
+                    const temp = val?.amount * val?.qte
+                    ss = ss + temp
+                }):null
+                setSum(ss)
+            }
             
         }, [])
 
