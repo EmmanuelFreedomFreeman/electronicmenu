@@ -3,10 +3,20 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../../../firebase';
 import { doc, onSnapshot,setDoc } from "firebase/firestore";
 function Gridbasket(props:any) {
+    const item = {
+    name:'',
+    cat:'',
+    image:'',
+    qte:1,
+    description:'',
+    amount:'',
+    category:''
+    
+}
     const [sum, setSum] = useState(0)
     const [name, setName] = useState('')
     const [order, setOrder] = useState<any[]>([])
-    const [bask, setbask] = useState<any[]>([])
+    const [bask, setbask] = useState<any[]>([item])
     const [button, setbutton] = useState(false)
     const router = useRouter()
     const url = router.query
