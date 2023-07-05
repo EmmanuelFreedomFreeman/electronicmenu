@@ -26,12 +26,22 @@ export default function Homescreen() {
     image:'pic',
     name:'empty'
   }
+  const item = {
+    name:'',
+    cat:'',
+    image:'',
+    qte:1,
+    description:'',
+    amount:'',
+    category:''
+    
+}
   const [recoilItems, setRecoilItems] = useRecoilState(Items);
   const [Category, setCategory] = useState('')
   const [items, setItems] = useState<any[]>([it])
   const [Categories, setCategories] = useState<any[]>([{category:'legume',type:'food'}])
   const Recoileitems =  useRecoilValue(Items);
-  const [basketItems, setbasketItems] = useState<any[]>([])
+  const [basketItems, setbasketItems] = useState<any[]>([item])
   const [pages, setPages] = useState('Home') 
   const router = useRouter()
   let categorytype = ''
