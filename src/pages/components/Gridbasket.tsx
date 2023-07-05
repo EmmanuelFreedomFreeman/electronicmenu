@@ -66,10 +66,10 @@ function Gridbasket(props:any) {
               });
 
             let ss = 0
-            props?.basketItems?.map((val:any,index:any)=>{
+            props?.basketItems !=undefined ? props?.basketItems?.map((val:any,index:any)=>{
                 const temp = val?.amount * val?.qte
                 ss = ss + temp
-            })
+            }):null
             setSum(ss)
             
         }, [])
@@ -82,7 +82,7 @@ function Gridbasket(props:any) {
                 <p className='text-center underline pt-1'>ORDER NUMER : {order.length}</p>
             </div>
         </div>
-        {props?.basketItems?.map((val:any,index:any)=>(
+        {props?.basketItems !=undefined ? props?.basketItems?.map((val:any,index:any)=>(
             <div key={index} className='mt-5 p-2 border-2 border-purple-500 rounded-md'>
                 
                 <p className='text-center underline mb-5'>{val?.name.toUpperCase()}</p>
@@ -98,7 +98,7 @@ function Gridbasket(props:any) {
                     <p className='text-right'>Total : FC {new Intl.NumberFormat('en-US',).format((val?.amount)*val?.qte)}</p>
                 </div>
             </div>
-        ))}
+        )):null}
         <div onClick={()=> submitorder()} className={(sum == 0 || button == true || name == '') ? 'hidden':'mt-5 p-2 border-2 bg-purple-500 rounded-md'}>
             <p className='text-center'>SUBMIT TOTALE :  FC {new Intl.NumberFormat('en-US',).format((sum))}  </p>
         </div>
