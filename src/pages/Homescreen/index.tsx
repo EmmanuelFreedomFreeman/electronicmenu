@@ -19,16 +19,23 @@ interface val {
 
 export default function Homescreen() {
   
+  let it = {
+    amount:0,
+    category:'empty',
+    description:'empty',
+    image:'pic',
+    name:'empty'
+  }
   const [recoilItems, setRecoilItems] = useRecoilState(Items);
   const [Category, setCategory] = useState('')
-  const [items, setItems] = useState<any[]>([])
-  const [Categories, setCategories] = useState<any[]>([])
+  const [items, setItems] = useState<any[]>([it])
+  const [Categories, setCategories] = useState<any[]>([{category:'legume',type:'food'}])
   const Recoileitems =  useRecoilValue(Items);
   const [basketItems, setbasketItems] = useState<any[]>([])
   const [pages, setPages] = useState('Home') 
   const router = useRouter()
   let categorytype = ''
-  let url = String(router?.query?.email) 
+  let url = String(router?.query?.email)  
   useEffect(() => {
 
     
