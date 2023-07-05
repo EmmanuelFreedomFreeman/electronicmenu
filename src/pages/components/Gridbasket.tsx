@@ -6,6 +6,7 @@ function Gridbasket(props:any) {
     const [sum, setSum] = useState(0)
     const [name, setName] = useState('')
     const [order, setOrder] = useState<any[]>([])
+    const [bask, setbask] = useState<any[]>([])
     const [button, setbutton] = useState(false)
     const router = useRouter()
     const url = router.query
@@ -42,7 +43,8 @@ function Gridbasket(props:any) {
         } catch (e) {
             console.error(e); // handle your error here
         } finally {
-            props.setbasketItems([]); // cleanup, always executed
+            props.setbasketItems([]);
+            setbask([]) // cleanup, always executed
             setSum(0);
             setName('');
             alert('the order has been submited')
@@ -54,27 +56,27 @@ function Gridbasket(props:any) {
         const minusItem = (indexitem:any) => {
                 const temp = [...props?.basketItems]
                 temp.splice(indexitem, 1)
-                props.setbasketItems([...temp])    
+                props.setbasketItems([...temp])  
+                setbask([...temp])  
         }
 
         useEffect(() => {
 
-            if (props?.basketItems == undefined) {
-                props?.setbasketItems([]);
+            if (props?.basketItems !=undefined) {
+                setbask(props?.basketItems)
             }
+            
             
             const unsubcat = onSnapshot(doc(db,company, "ORDER"), (doc) => {
                 doc.data()?.order? setOrder([...doc.data()?.order]):'';
               });
 
-            if (props?.basketItems != undefined) {
-                let ss = 0
-                props?.basketItems !=undefined ? props?.basketItems?.map((val:any,index:any)=>{
-                    const temp = val?.amount * val?.qte
-                    ss = ss + temp
-                }):null
-                setSum(ss)
-            }
+            let ss = 0
+            bask.map((val:any,index:any)=>{
+                const temp = val?.amount * val?.qte
+                ss = ss + temp
+            })
+            setSum(ss)
             
         }, [])
 
@@ -86,7 +88,7 @@ function Gridbasket(props:any) {
                 <p className='text-center underline pt-1'>ORDER NUMER : {order.length}</p>
             </div>
         </div>
-        {props?.basketItems !=undefined ? props?.basketItems?.map((val:any,index:any)=>(
+        {bask.map((val:any,index:any)=>(
             <div key={index} className='mt-5 p-2 border-2 border-purple-500 rounded-md'>
                 
                 <p className='text-center underline mb-5'>{val?.name.toUpperCase()}</p>
@@ -102,7 +104,7 @@ function Gridbasket(props:any) {
                     <p className='text-right'>Total : FC {new Intl.NumberFormat('en-US',).format((val?.amount)*val?.qte)}</p>
                 </div>
             </div>
-        )):null}
+        ))}
         <div onClick={()=> submitorder()} className={(sum == 0 || button == true || name == '') ? 'hidden':'mt-5 p-2 border-2 bg-purple-500 rounded-md'}>
             <p className='text-center'>SUBMIT TOTALE :  FC {new Intl.NumberFormat('en-US',).format((sum))}  </p>
         </div>
