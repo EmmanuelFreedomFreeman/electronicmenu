@@ -3,7 +3,7 @@ import {useRecoilValue,useRecoilState} from 'recoil'
 
 function Griditems(props: any) {
     const [qte, setQte] = useState(props?.qte? props?.qte :1)
-    const texte = props?.description
+    const texte = const texte = props?.description != undefined ? props?.description : ''
     const prix = props?.amount
     const [calculePrix, setCalculePrix] = useState(new Intl.NumberFormat('en-US',).format((prix)*qte))
 
