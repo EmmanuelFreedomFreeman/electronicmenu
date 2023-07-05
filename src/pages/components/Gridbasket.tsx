@@ -73,7 +73,7 @@ function Gridbasket(props:any) {
         useEffect(() => {
 
             if (props?.basketItems !=undefined) {
-                setbask(props?.basketItems)
+                setbask([...props?.basketItems])
             }
             
             
