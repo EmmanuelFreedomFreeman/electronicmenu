@@ -82,7 +82,7 @@ function Gridbasket(props:any) {
               });
 
             let ss = 0
-            bask.map((val:any,index:any)=>{
+            bask?.map((val:any,index:any)=>{
                 const temp = val?.amount * val?.qte
                 ss = ss + temp
             })
@@ -98,7 +98,7 @@ function Gridbasket(props:any) {
                 <p className='text-center underline pt-1'>ORDER NUMER : {order.length}</p>
             </div>
         </div>
-        {bask.map((val:any,index:any)=>(
+        {bask?.map((val:any,index:any)=>(
             <div key={index} className='mt-5 p-2 border-2 border-purple-500 rounded-md'>
                 
                 <p className='text-center underline mb-5'>{val?.name.toUpperCase()}</p>
