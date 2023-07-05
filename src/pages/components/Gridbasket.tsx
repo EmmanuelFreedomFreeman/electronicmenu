@@ -72,21 +72,24 @@ function Gridbasket(props:any) {
 
         useEffect(() => {
 
-            if (props?.basketItems !=undefined) {
-                setbask([...props?.basketItems])
+            const sum = () => {
+                if (props?.basketItems !=undefined) {
+                    setbask([...props?.basketItems])
+                }
+                let ss = 0
+                bask?.map((val:any,index:any)=>{
+                    const temp = val?.amount * val?.qte
+                    ss = ss + temp
+                })
+                setSum(ss)
             }
+            sum()
             
             
             const unsubcat = onSnapshot(doc(db,company, "ORDER"), (doc) => {
                 doc.data()?.order? setOrder([...doc.data()?.order]):'';
               });
 
-            let ss = 0
-            bask?.map((val:any,index:any)=>{
-                const temp = val?.amount * val?.qte
-                ss = ss + temp
-            })
-            setSum(ss)
             
         }, [])
 
