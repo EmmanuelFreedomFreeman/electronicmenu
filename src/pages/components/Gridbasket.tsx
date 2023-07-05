@@ -16,7 +16,7 @@ function Gridbasket(props:any) {
     const [sum, setSum] = useState(0)
     const [name, setName] = useState('')
     const [order, setOrder] = useState<any[]>([])
-    const [bask, setbask] = useState<any[]>([item])
+    const [bask, setbask] = useState([item])
     const [button, setbutton] = useState(false)
     const router = useRouter()
     const url = router.query
