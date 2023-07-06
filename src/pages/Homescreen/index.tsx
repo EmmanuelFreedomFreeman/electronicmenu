@@ -140,7 +140,7 @@ export default function Homescreen() {
             )}
             {pages == 'Basket' && (
               <div className='h-[40rem] overflow-y-auto z-10'>
-                  {true? (<Gridbasket {...basketItems} Categories={Categories} cat={Category} basketItems={basketItems} setbasketItems={setbasketItems} />):(<p></p>)}   
+                  {true? (<Gridbasket Categories={Categories} cat={Category} basketItems={basketItems} setbasketItems={setbasketItems} />):(<p></p>)}   
               </div>
             )}
           </div>
