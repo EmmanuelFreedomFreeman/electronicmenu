@@ -74,7 +74,11 @@ function Gridbasket(props:any) {
 
             const sum = () => {
                 if (props?.basketItems !=undefined) {
-                    setbask([...props?.basketItems])
+                    const temp:any = []
+                    props?.basketItems?.map((value:any,index:number)=>{
+                        temp.push({...value})
+                    })
+                    setbask(temp)
                 }
                 let ss = 0
                 bask?.map((val:any,index:any)=>{
