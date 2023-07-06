@@ -18,11 +18,29 @@ interface val {
 }
 
 export default function Homescreen() {
-  
+  let it = {
+    amount:0,
+    category:'empty',
+    description:'empty',
+    image:'pic',
+    name:'empty'
+  }
+
+  const item = {
+    name:'',
+    cat:'',
+    image:'',
+    qte:1,
+    description:'',
+    amount:'',
+    category:''
+    
+}
+
   const [recoilItems, setRecoilItems] = useRecoilState(Items);
   const [Category, setCategory] = useState('')
-  const [items, setItems] = useState<any[]>([])
-  const [Categories, setCategories] = useState<any[]>([])
+  const [items, setItems] = useState<any[]>([it])
+  const [Categories, setCategories] = useState<any[]>([{category:'legume',type:'food'}])
   const Recoileitems =  useRecoilValue(Items);
   const [basketItems, setbasketItems] = useState<any[]>([])
   const [pages, setPages] = useState('Home') 
@@ -66,6 +84,7 @@ export default function Homescreen() {
 
 
   return (
+    
     <div className='p-1'>
       <div className='flex justify-center'><img src='logo.png' alt='logo' className='h-11' /></div>
 
@@ -123,7 +142,7 @@ export default function Homescreen() {
             )}
             {pages == 'Basket' && (
               <div className='h-[40rem] overflow-y-auto z-10'>
-                  {true? (<Gridbasket {...basketItems} Categories={Categories} cat={Category} basketItems={basketItems} setbasketItems={setbasketItems} />):(<p></p>)}   
+                  <Gridbasket Categories={Categories} cat={Category} basketItems={basketItems} setbasketItems={setbasketItems} /> 
               </div>
             )}
           </div>

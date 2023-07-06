@@ -3,7 +3,7 @@ import {useRecoilValue,useRecoilState} from 'recoil'
 
 function Griditems(props: any) {
     const [qte, setQte] = useState(props?.qte? props?.qte :1)
-    const texte = props?.description
+    const texte = props?.description != undefined ? props?.description : ''
     const prix = props?.amount
     const [calculePrix, setCalculePrix] = useState(new Intl.NumberFormat('en-US',).format((prix)*qte))
 
@@ -34,9 +34,9 @@ function Griditems(props: any) {
             
         }
         
-        const findInItem = props?.basketItems.find((e:any) => e.name == props?.name)
+        const findInItem = props?.basketItems?.find((e:any) => e.name == props?.name)
         if (findInItem != undefined) {
-            const findIndexItem = props?.basketItems.findIndex((e:any) => e.name == props?.name)
+            const findIndexItem = props?.basketItems?.findIndex((e:any) => e.name == props?.name)
             const temp = [...props.basketItems]
             temp.splice(findIndexItem, 1,item)
             props.setbasketItems([...temp])

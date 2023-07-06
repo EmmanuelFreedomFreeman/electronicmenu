@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { db } from '../../../firebase';
+import { db } from './firebase';
 import { doc, onSnapshot,setDoc } from "firebase/firestore";
 import { useRouter } from 'next/router';
 
@@ -14,12 +14,22 @@ interface p {
 function Gridbasket(props:p) {
     const [sum, setSum] = useState(0)
     const [name, setName] = useState('')
-    const [order, setOrder] = useState<any[]>([])
+    const [order, setOrder] = useState<any[]>([null])
     const [button, setbutton] = useState(false)
     const router = useRouter()
     const url = router?.query
     const company = String(router?.query?.email) 
-    const [orders, setorders] = useState({})
+    const [orders, setorders] = useState(
+        {
+            data : [...props?.basketItems],
+            name : name,
+            ordernumber : order.length,
+            date : Date.now(),
+            etat : 'new order',
+            total : sum,
+            url : url
+        }
+    )
     
     
 
